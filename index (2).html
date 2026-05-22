@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Curtis "CJ" Hansen — Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --navy: #0d1b2a;
+      --navy-mid: #162233;
+      --slate: #1e3448;
+      --gold: #c9a84c;
+      --gold-light: #e8c87a;
+      --cream: #f5f0e8;
+      --text-muted: #6b7280;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--navy); color: var(--cream); overflow-x: hidden; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 4rem;
+      background: rgba(13,27,42,0.85); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+    }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 300; letter-spacing: 0.08em; color: var(--cream); text-decoration: none; }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(245,240,232,0.65); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* HERO */
+    #hero { min-height: 100vh; display: flex; align-items: center; padding: 8rem 4rem 4rem; position: relative; overflow: hidden; }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background: radial-gradient(ellipse 60% 80% at 70% 50%, rgba(201,168,76,0.06) 0%, transparent 70%),
+                  radial-gradient(ellipse 40% 60% at 10% 80%, rgba(30,52,72,0.8) 0%, transparent 60%);
+    }
+    .hero-line { position: absolute; top: 0; right: 22%; width: 1px; height: 100%; background: linear-gradient(to bottom, transparent, rgba(201,168,76,0.25), transparent); }
+    .hero-content { position: relative; z-index: 1; max-width: 700px; }
+    .hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem; }
+    .hero-eyebrow::before { content: ''; display: block; width: 40px; height: 1px; background: var(--gold); }
+    h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(3.5rem, 7vw, 6.5rem); font-weight: 300; line-height: 1.05; letter-spacing: -0.01em; color: var(--cream); margin-bottom: 1.5rem; }
+    h1 em { font-style: italic; color: var(--gold-light); }
+    .hero-desc { font-size: 1rem; line-height: 1.75; color: rgba(245,240,232,0.65); max-width: 480px; margin-bottom: 2.5rem; }
+    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary { display: inline-block; padding: 0.75rem 2rem; background: var(--gold); color: var(--navy); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; transition: background 0.2s, transform 0.15s; border: none; cursor: pointer; }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .btn-outline { display: inline-block; padding: 0.75rem 2rem; border: 1px solid rgba(201,168,76,0.5); color: var(--gold); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; transition: border-color 0.2s, color 0.2s, transform 0.15s; }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold-light); transform: translateY(-1px); }
+    .scroll-hint { position: absolute; bottom: 2.5rem; left: 4rem; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(245,240,232,0.35); display: flex; align-items: center; gap: 0.75rem; }
+    .scroll-hint::after { content: ''; display: block; width: 1px; height: 40px; background: linear-gradient(to bottom, rgba(201,168,76,0.5), transparent); animation: scrollPulse 2s ease-in-out infinite; }
+    @keyframes scrollPulse { 0%,100%{opacity:0.4} 50%{opacity:1} }
+
+    /* SECTIONS */
+    section { padding: 6rem 4rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label { font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem; }
+    .section-label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--gold); }
+    h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; color: var(--cream); margin-bottom: 3rem; line-height: 1.2; }
+    h2 em { font-style: italic; color: var(--gold-light); }
+
+    /* ABOUT */
+    #about { background: var(--navy-mid); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .about-text p { font-size: 1rem; line-height: 1.85; color: rgba(245,240,232,0.7); margin-bottom: 1.25rem; }
+    .skills-wrap { margin-top: 2rem; }
+    .skills-label { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(245,240,232,0.4); margin-bottom: 0.75rem; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem; }
+    .skill-tag { font-size: 0.72rem; letter-spacing: 0.06em; padding: 0.3rem 0.75rem; border: 1px solid rgba(201,168,76,0.25); color: rgba(245,240,232,0.6); transition: border-color 0.2s, color 0.2s; }
+    .skill-tag:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ABOUT CARD */
+    .about-visual { display: flex; flex-direction: column; gap: 1.5rem; }
+    .about-card { width: 100%; aspect-ratio: 3/4; max-width: 320px; background: linear-gradient(135deg, var(--slate) 0%, var(--navy) 100%); border: 1px solid rgba(201,168,76,0.2); display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+    .about-card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 30%, rgba(201,168,76,0.07) 0%, transparent 60%); }
+    .about-initials { font-family: 'Cormorant Garamond', serif; font-size: 6rem; font-weight: 300; color: rgba(201,168,76,0.2); letter-spacing: -0.02em; position: relative; z-index: 1; }
+    .about-card-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-top: 1rem; position: relative; z-index: 1; }
+    .quick-facts { border: 1px solid rgba(201,168,76,0.15); padding: 1.5rem; max-width: 320px; }
+    .quick-fact { display: flex; justify-content: space-between; align-items: baseline; padding: 0.5rem 0; border-bottom: 1px solid rgba(245,240,232,0.06); }
+    .quick-fact:last-child { border-bottom: none; }
+    .qf-label { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,240,232,0.35); }
+    .qf-val { font-size: 0.85rem; color: var(--cream); }
+
+    /* PROJECTS */
+    #projects { background: var(--navy); }
+    .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; }
+    .project-card { background: var(--navy-mid); padding: 2.5rem 2rem; position: relative; overflow: hidden; transition: background 0.3s; }
+    .project-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 0.35s ease; }
+    .project-card:hover::before { transform: scaleX(1); }
+    .project-card:hover { background: var(--slate); }
+    .project-num { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; font-weight: 300; color: rgba(201,168,76,0.12); line-height: 1; margin-bottom: 1.5rem; }
+    .project-tag { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
+    .project-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; color: var(--cream); margin-bottom: 0.75rem; line-height: 1.2; }
+    .project-desc { font-size: 0.875rem; line-height: 1.7; color: rgba(245,240,232,0.55); margin-bottom: 1.5rem; }
+    .project-bullets { list-style: none; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .project-bullets li { font-size: 0.8rem; line-height: 1.5; color: rgba(245,240,232,0.45); padding-left: 1rem; position: relative; }
+    .project-bullets li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
+    .project-link { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; transition: gap 0.2s; }
+    .project-link:hover { gap: 0.9rem; }
+    .project-link::after { content: '→'; }
+
+    /* BLOG */
+    #blog { background: var(--navy-mid); }
+    .blog-list { display: flex; flex-direction: column; }
+    .blog-item { display: grid; grid-template-columns: 120px 1fr auto; align-items: start; gap: 2rem; padding: 2rem 0; border-bottom: 1px solid rgba(245,240,232,0.08); text-decoration: none; transition: all 0.2s; }
+    .blog-item:first-child { border-top: 1px solid rgba(245,240,232,0.08); }
+    .blog-item:hover .blog-item-title { color: var(--gold-light); }
+    .blog-date { font-size: 0.7rem; letter-spacing: 0.1em; color: rgba(245,240,232,0.35); text-transform: uppercase; padding-top: 0.2rem; }
+    .blog-item-title { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 400; color: var(--cream); line-height: 1.3; margin-bottom: 0.4rem; transition: color 0.2s; }
+    .blog-item-excerpt { font-size: 0.85rem; line-height: 1.6; color: rgba(245,240,232,0.45); }
+    .blog-arrow { color: var(--gold); font-size: 1.2rem; padding-top: 0.25rem; }
+
+    /* CONTACT */
+    #contact { background: var(--navy); }
+    .contact-wrap { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; align-items: start; }
+    .contact-info p { font-size: 1rem; line-height: 1.8; color: rgba(245,240,232,0.6); margin-bottom: 2.5rem; }
+    .social-links { display: flex; flex-direction: column; gap: 0; }
+    .social-link { display: flex; align-items: center; gap: 1rem; text-decoration: none; color: rgba(245,240,232,0.55); font-size: 0.85rem; letter-spacing: 0.05em; transition: color 0.2s; padding: 0.65rem 0; border-bottom: 1px solid rgba(245,240,232,0.07); }
+    .social-link:hover { color: var(--gold); }
+    .social-link-icon { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(201,168,76,0.2); font-size: 0.8rem; color: var(--gold); flex-shrink: 0; }
+    .contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group label { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(245,240,232,0.4); }
+    .form-group input, .form-group textarea { background: var(--navy-mid); border: 1px solid rgba(245,240,232,0.1); color: var(--cream); font-family: 'DM Sans', sans-serif; font-size: 0.9rem; padding: 0.75rem 1rem; outline: none; transition: border-color 0.2s; }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-group input:focus, .form-group textarea:focus { border-color: rgba(201,168,76,0.5); }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(245,240,232,0.2); }
+    .form-success { display: none; padding: 1rem; background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.3); color: var(--gold); font-size: 0.85rem; }
+
+    /* FOOTER */
+    footer { padding: 2rem 4rem; border-top: 1px solid rgba(245,240,232,0.08); display: flex; align-items: center; justify-content: space-between; }
+    .footer-copy { font-size: 0.72rem; letter-spacing: 0.08em; color: rgba(245,240,232,0.25); }
+    .footer-name { font-family: 'Cormorant Garamond', serif; font-size: 0.9rem; color: rgba(245,240,232,0.35); letter-spacing: 0.1em; }
+
+    /* ANIMATIONS */
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 900px) {
+      nav { padding: 1rem 2rem; }
+      .nav-links { display: none; }
+      section { padding: 4rem 2rem; }
+      #hero { padding: 7rem 2rem 4rem; }
+      .about-grid, .contact-wrap { grid-template-columns: 1fr; gap: 3rem; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .blog-item { grid-template-columns: 80px 1fr; }
+      .blog-arrow { display: none; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">CJ<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Work</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="https://github.com/CJHansen10" target="_blank">GitHub ↗</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-line"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">LMU Computer Science '26 · Open to full-time roles</div>
+    <h1>Curtis <em>"CJ"</em> Hansen</h1>
+    <p class="hero-desc">
+      I don't just study software — I build it. From a 5,000-line Unity fighting game to a Neo4j sports analytics pipeline,
+      I take on projects that push me further than any classroom assignment can.
+    </p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn-primary">Get in Touch</a>
+      <a href="#" class="btn-outline" onclick="alert('Add your hosted resume PDF link here!')">Download Resume</a>
+    </div>
+  </div>
+  <div class="scroll-hint">Scroll</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid fade-in">
+      <div class="about-text">
+        <div class="section-label">About Me</div>
+        <h2>Builder at heart, <em>engineer</em> by training</h2>
+        <p>
+          I'm a Computer Science student at Loyola Marymount University in Los Angeles, graduating May 2026 with a 3.2 GPA.
+          Developing software isn't just my field — it's something I genuinely love to do.
+        </p>
+        <p>
+          I've gained experience not just through coursework, but through projects I've taken on myself: designing graph database schemas,
+          leading game development, and debugging real problems for real people every day as an IT Technician on campus.
+        </p>
+        <p>
+          One thing I've gotten good at: explaining complex technical issues to someone with zero tech experience and making them
+          feel like an expert by the end of a five-minute conversation.
+        </p>
+        <div class="skills-wrap">
+          <div class="skills-label">Languages</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">C</span>
+            <span class="skill-tag">C#</span>
+          </div>
+          <div class="skills-label">Tools &amp; Concepts</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Git / GitHub</span>
+            <span class="skill-tag">Linux / CLI</span>
+            <span class="skill-tag">Neo4j · Cypher</span>
+            <span class="skill-tag">Unity</span>
+            <span class="skill-tag">APIs</span>
+            <span class="skill-tag">Databases</span>
+            <span class="skill-tag">OOP</span>
+            <span class="skill-tag">Data Structures &amp; Algorithms</span>
+          </div>
+          <div class="skills-label">Math</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Calculus</span>
+            <span class="skill-tag">Discrete Math</span>
+            <span class="skill-tag">Linear Algebra</span>
+            <span class="skill-tag">Statistics</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual">
+        <div class="about-card">
+          <div class="about-initials">CJ</div>
+          <div class="about-card-label">Curtis Hansen · Los Angeles</div>
+        </div>
+        <div class="quick-facts">
+          <div class="quick-fact">
+            <span class="qf-label">School</span>
+            <span class="qf-val">LMU, Los Angeles</span>
+          </div>
+          <div class="quick-fact">
+            <span class="qf-label">Degree</span>
+            <span class="qf-val">B.S. Computer Science</span>
+          </div>
+          <div class="quick-fact">
+            <span class="qf-label">GPA</span>
+            <span class="qf-val">3.0</span>
+          </div>
+          <div class="quick-fact">
+            <span class="qf-label">Graduation</span>
+            <span class="qf-val">May 2026</span>
+          </div>
+          <div class="quick-fact">
+            <span class="qf-label">Location</span>
+            <span class="qf-val">Los Angeles, CA</span>
+          </div>
+          <div class="quick-fact">
+            <span class="qf-label">Status</span>
+            <span class="qf-val" style="color:var(--gold)">Open to hire</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+    <div class="section-label fade-in">Selected Work</div>
+    <h2 class="fade-in">Projects I <em>actually</em> built</h2>
+    <div class="projects-grid">
+      <div class="project-card fade-in">
+        <div class="project-num">01</div>
+        <div class="project-tag">Unity · C# · Game Dev</div>
+        <div class="project-title">Pirate Fighterz</div>
+        <p class="project-desc">A 2D fighting game I've been leading development on since October 2025. Six playable characters, custom animation work from an artist collaborator, and a lot of time making hit detection sync perfectly with the animation system.</p>
+        <ul class="project-bullets">
+          <li>6 characters · 36+ animation systems · 5,000+ lines of code</li>
+          <li>Movement, blocking, hit detection & input handling via Unity Player Input</li>
+          <li>Title screen, character select, scene flow, & multiplayer input support</li>
+        </ul>
+        <a href="https://github.com/CJHansen10" target="_blank" class="project-link">View on GitHub</a>
+      </div>
+      <div class="project-card fade-in">
+        <div class="project-num">02</div>
+        <div class="project-tag">Neo4j · Cypher · Python</div>
+        <div class="project-title">NFL QB Passing Database</div>
+        <p class="project-desc">A project I designed and built alone to analyze NFL passing performance using a property graph. It pushed me to think carefully about data structuring and query optimization in a way classroom assignments never did.</p>
+        <ul class="project-bullets">
+          <li>Schema models Players, Teams, Seasons & Games</li>
+          <li>ETL pipeline to load and normalize passing stats</li>
+          <li>Advanced Cypher queries: top passers, team performance, player comparisons</li>
+        </ul>
+        <a href="https://github.com/CJHansen10" target="_blank" class="project-link">View on GitHub</a>
+      </div>
+      <div class="project-card fade-in">
+        <div class="project-num">03</div>
+        <div class="project-tag">IT Support · LMU ITS</div>
+        <div class="project-title">Student IT Technician</div>
+        <p class="project-desc">Real-world problem solving, fast. I find the solution and get it running with no complications — so professors can get back to teaching. Over 300 tickets resolved in a single year.</p>
+        <ul class="project-bullets">
+          <li>Hardware, software, connectivity & account issues</li>
+          <li>Windows & macOS across faculty, staff & student devices</li>
+          <li>Clear technical communication to non-technical users under pressure</li>
+        </ul>
+        <a href="#contact" class="project-link">Get in Touch</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-wrap">
+      <div>
+        <div class="section-label fade-in">Contact</div>
+        <h2 class="fade-in">Let's <em>connect</em></h2>
+        <p class="fade-in">I'm actively looking for full-time software engineering roles starting May 2026. Whether it's a job opportunity, a collaboration, or just a conversation — reach out.</p>
+        <div class="social-links fade-in">
+          <a href="https://github.com/CJHansen10" target="_blank" class="social-link">
+            <div class="social-link-icon">gh</div>
+            github.com/CJHansen10
+          </a>
+          <a href="mailto:cjcopperh1@gmail.com" class="social-link">
+            <div class="social-link-icon">@</div>
+            cjcopperh1@gmail.com
+          </a>
+          <a href="tel:4804311669" class="social-link">
+            <div class="social-link-icon">☎</div>
+            480-431-1669
+          </a>
+        </div>
+      </div>
+      <div class="fade-in">
+        <div class="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text" placeholder="Jane" id="fname"/>
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" placeholder="Smith" id="lname"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="jane@company.com" id="email"/>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea placeholder="Tell me about the opportunity…" id="message"></textarea>
+          </div>
+          <div class="form-success" id="formSuccess">✓ Message sent! I'll be in touch soon.</div>
+          <button class="btn-primary" onclick="submitForm()">Send Message</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-copy">© 2026 Curtis "CJ" Hansen. All rights reserved.</div>
+  <div class="footer-name">CJ Hansen · LMU CS '26</div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 80);
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  function submitForm() {
+    const f = document.getElementById('fname').value;
+    const e = document.getElementById('email').value;
+    if (!f || !e) { alert('Please fill in your name and email.'); return; }
+    document.getElementById('formSuccess').style.display = 'block';
+    ['fname','lname','email','message'].forEach(id => document.getElementById(id).value = '');
+    setTimeout(() => document.getElementById('formSuccess').style.display = 'none', 4000);
+  }
+</script>
+</body>
+</html>
