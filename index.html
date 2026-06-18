@@ -18,7 +18,6 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body { font-family: 'DM Sans', sans-serif; background: var(--navy); color: var(--cream); overflow-x: hidden; }
-
     /* NAV */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -32,7 +31,6 @@
     .nav-links { display: flex; gap: 2.5rem; list-style: none; }
     .nav-links a { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(245,240,232,0.65); text-decoration: none; transition: color 0.2s; }
     .nav-links a:hover { color: var(--gold); }
-
     /* HERO */
     #hero { min-height: 100vh; display: flex; align-items: center; padding: 8rem 4rem 4rem; position: relative; overflow: hidden; }
     .hero-bg {
@@ -55,7 +53,6 @@
     .scroll-hint { position: absolute; bottom: 2.5rem; left: 4rem; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(245,240,232,0.35); display: flex; align-items: center; gap: 0.75rem; }
     .scroll-hint::after { content: ''; display: block; width: 1px; height: 40px; background: linear-gradient(to bottom, rgba(201,168,76,0.5), transparent); animation: scrollPulse 2s ease-in-out infinite; }
     @keyframes scrollPulse { 0%,100%{opacity:0.4} 50%{opacity:1} }
-
     /* SECTIONS */
     section { padding: 6rem 4rem; }
     .section-inner { max-width: 1100px; margin: 0 auto; }
@@ -63,7 +60,6 @@
     .section-label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--gold); }
     h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; color: var(--cream); margin-bottom: 3rem; line-height: 1.2; }
     h2 em { font-style: italic; color: var(--gold-light); }
-
     /* ABOUT */
     #about { background: var(--navy-mid); }
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
@@ -73,7 +69,6 @@
     .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem; }
     .skill-tag { font-size: 0.72rem; letter-spacing: 0.06em; padding: 0.3rem 0.75rem; border: 1px solid rgba(201,168,76,0.25); color: rgba(245,240,232,0.6); transition: border-color 0.2s, color 0.2s; }
     .skill-tag:hover { border-color: var(--gold); color: var(--gold); }
-
     /* ABOUT CARD */
     .about-visual { display: flex; flex-direction: column; gap: 1.5rem; }
     .about-card { width: 100%; aspect-ratio: 3/4; max-width: 320px; background: linear-gradient(135deg, var(--slate) 0%, var(--navy) 100%); border: 1px solid rgba(201,168,76,0.2); display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; overflow: hidden; }
@@ -85,7 +80,6 @@
     .quick-fact:last-child { border-bottom: none; }
     .qf-label { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,240,232,0.35); }
     .qf-val { font-size: 0.85rem; color: var(--cream); }
-
     /* PROJECTS */
     #projects { background: var(--navy); }
     .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; }
@@ -103,7 +97,6 @@
     .project-link { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; transition: gap 0.2s; }
     .project-link:hover { gap: 0.9rem; }
     .project-link::after { content: '→'; }
-
     /* BLOG */
     #blog { background: var(--navy-mid); }
     .blog-list { display: flex; flex-direction: column; }
@@ -114,7 +107,6 @@
     .blog-item-title { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 400; color: var(--cream); line-height: 1.3; margin-bottom: 0.4rem; transition: color 0.2s; }
     .blog-item-excerpt { font-size: 0.85rem; line-height: 1.6; color: rgba(245,240,232,0.45); }
     .blog-arrow { color: var(--gold); font-size: 1.2rem; padding-top: 0.25rem; }
-
     /* CONTACT */
     #contact { background: var(--navy); }
     .contact-wrap { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; align-items: start; }
@@ -132,16 +124,13 @@
     .form-group input:focus, .form-group textarea:focus { border-color: rgba(201,168,76,0.5); }
     .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(245,240,232,0.2); }
     .form-success { display: none; padding: 1rem; background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.3); color: var(--gold); font-size: 0.85rem; }
-
     /* FOOTER */
     footer { padding: 2rem 4rem; border-top: 1px solid rgba(245,240,232,0.08); display: flex; align-items: center; justify-content: space-between; }
     .footer-copy { font-size: 0.72rem; letter-spacing: 0.08em; color: rgba(245,240,232,0.25); }
     .footer-name { font-family: 'Cormorant Garamond', serif; font-size: 0.9rem; color: rgba(245,240,232,0.35); letter-spacing: 0.1em; }
-
     /* ANIMATIONS */
     .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
-
     @media (max-width: 900px) {
       nav { padding: 1rem 2rem; }
       .nav-links { display: none; }
@@ -157,7 +146,6 @@
   </style>
 </head>
 <body>
-
 <!-- NAV -->
 <nav>
   <a href="#hero" class="nav-logo">CJ<span>.</span></a>
@@ -168,7 +156,6 @@
     <li><a href="https://github.com/CJHansen10" target="_blank">GitHub ↗</a></li>
   </ul>
 </nav>
-
 <!-- HERO -->
 <section id="hero">
   <div class="hero-bg"></div>
@@ -187,7 +174,6 @@
   </div>
   <div class="scroll-hint">Scroll</div>
 </section>
-
 <!-- ABOUT -->
 <section id="about">
   <div class="section-inner">
@@ -196,7 +182,7 @@
         <div class="section-label">About Me</div>
         <h2>Builder at heart, <em>engineer</em> by training</h2>
         <p>
-          I'm a Computer Science student at Loyola Marymount University in Los Angeles, graduating May 2026 with a 3.2 GPA.
+          I'm a Computer Science student at Loyola Marymount University in Los Angeles, graduating May 2026.
           Developing software isn't just my field — it's something I genuinely love to do.
         </p>
         <p>
@@ -251,10 +237,6 @@
             <span class="qf-val">B.S. Computer Science</span>
           </div>
           <div class="quick-fact">
-            <span class="qf-label">GPA</span>
-            <span class="qf-val">3.0</span>
-          </div>
-          <div class="quick-fact">
             <span class="qf-label">Graduation</span>
             <span class="qf-val">May 2026</span>
           </div>
@@ -271,7 +253,6 @@
     </div>
   </div>
 </section>
-
 <!-- PROJECTS -->
 <section id="projects">
   <div class="section-inner">
@@ -317,8 +298,6 @@
     </div>
   </div>
 </section>
-
-
 <!-- CONTACT -->
 <section id="contact">
   <div class="section-inner">
@@ -369,13 +348,11 @@
     </div>
   </div>
 </section>
-
 <!-- FOOTER -->
 <footer>
   <div class="footer-copy">© 2026 Curtis "CJ" Hansen. All rights reserved.</div>
   <div class="footer-name">CJ Hansen · LMU CS '26</div>
 </footer>
-
 <script>
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((e, i) => {
@@ -383,7 +360,6 @@
     });
   }, { threshold: 0.1 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
   function submitForm() {
     const f = document.getElementById('fname').value;
     const e = document.getElementById('email').value;
